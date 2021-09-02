@@ -1,0 +1,120 @@
+input LoginInput {
+    PersonID : String!,
+    UserName : String!,
+    Password : String!,
+}
+input AccountManagementInput {
+  PersonID : String!,
+  LastName : String!,
+  FirstName : String!,
+  Address   : String!,
+  City     : String!,
+  Password : String!,
+  MobileNumber : String!,
+}
+input CreditInput {
+    Credit_Account_PersonID : String!,
+    Credit_Account_Number : ID!,
+    Amount : String!,
+    User_Account_Number : ID!,
+    Password : String!,
+    Confrim : Boolean!,
+}
+input DebitInput {
+    Account_number : ID!,
+    Amount : String!,
+    Password : String!,
+    Confrim : Boolean!,
+}
+input RegisterInput {
+  PersonID :  String!,
+  LastName :  String!,
+  FirstName : String!,
+  Address   : String!,
+  City     :  String!,
+  UserName :  String!,
+  Password :  String!,
+  MobileNumber : String!,
+}
+input DeleteInput {
+    PersonID : String!,
+    UserName  : String!,
+    Password : String!,
+}
+input CreditGetInput {
+   Account_number : ID!,
+}
+input DebitGetInput {
+   Account_number : ID!,
+}
+input AccountGetInput {
+    PersonID : String!,
+}
+type Query {
+    get_Account_Management_Service(input : AccountGetInput) : [Account_details],
+    get_CreditDetails (input : CreditGetInput): [Credit_data],
+    get_DebitDetails (input : DebitGetInput): [Debit_data],
+}
+type Messag{
+    reply_msg : String!,
+    token : String!,
+}
+type Message{
+    result : String!,
+
+}
+type Account_details {
+  CurrentBalance : ID!,
+  CreatedDate  : String!,
+  AccountNumber : String!,
+  BranchCode  : String!,
+  PersonID : String!,
+  LastName : String!,
+  FirstName : String!,
+  Address   : String!,
+  City     : String!,
+  UserName : String!,
+  MobileNumber : String!,
+}
+type Credit_data {
+    credit_account_personid : String!,
+    credit_account_number : ID!,   
+    user_account_number : ID!,
+    amount : ID!,
+    createddate : String!,
+}
+type Debit_data {
+    UserName : String!,
+    account_number : ID!,
+    account_code : String!,
+    transaction_ID : ID!,
+    debited_Amount : String!,
+}
+type Credit_Sub_data {
+    name : String!,
+    transaction_ID : ID!,
+    credited_Amount : String!,
+    balance : String!,
+}
+type Debit_Sub_data {
+    name : String!,
+    transaction_ID : ID!,
+    debit_Amount : String!, 
+    balance : String!,
+}
+type Mutation {
+    registerAccount(input : RegisterInput) : Messag,
+    createLogin(input: LoginInput): Message,
+    updateAccount(input : AccountManagementInput) : Message,
+    creditAmount(input : CreditInput) : Message,
+    debitAmount(input : DebitInput) : Message,
+    deleteAccount(input: DeleteInput): Message,
+}
+type  Subscription {
+    RegisterMessage : Message,
+    LoginMessage : Message,
+    CreditMessage : Messag,
+    DebitMessage : Debit_Sub_data,
+    UpdateAccount : Message,
+    DeleteAccount : Message,
+}

@@ -1,0 +1,35 @@
+{
+  "name": "graphql-basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js --ext js,graphql --exec babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "get-schema": "graphql get-schema -p prisma"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.8.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "bcrypt": "^5.0.1",
+    "bluebird": "^3.7.2",
+    "express": "^4.17.1",
+    "graphql-cli": "^2.16.4",
+    "graphql-subscriptions": "^0.5.8",
+    "graphql-yoga": "^1.14.10",
+    "json-web-token": "^3.2.0",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.0.0",
+    "prisma-binding": "^2.1.1",
+    "redis": "^3.1.2",
+    "uuid": "^3.4.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
