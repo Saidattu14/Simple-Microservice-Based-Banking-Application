@@ -51,11 +51,11 @@ input AccountGetInput {
     PersonID : String!,
 }
 type Query {
-    get_Account_Management_Service(input : AccountGetInput) : [Account_details],
+    get_Account_Management_Service(input : AccountGetInput) : Account_details,
     get_CreditDetails (input : CreditGetInput): [Credit_data],
     get_DebitDetails (input : DebitGetInput): [Debit_data],
 }
-type Messag{
+type Messagee{
     reply_msg : String!,
     token : String!,
 }
@@ -103,17 +103,16 @@ type Debit_Sub_data {
     balance : String!,
 }
 type Mutation {
-    registerAccount(input : RegisterInput) : Messag,
-    createLogin(input: LoginInput): Message,
-    updateAccount(input : AccountManagementInput) : Message,
-    creditAmount(input : CreditInput) : Message,
-    debitAmount(input : DebitInput) : Message,
-    deleteAccount(input: DeleteInput): Message,
+    registerAccount(input : RegisterInput) : Messagee,
+    createLogin(input: LoginInput): Messagee,
+    updateAccount(input : AccountManagementInput) : Messagee,
+    creditAmount(input : CreditInput) : Messagee,
+    debitAmount(input : DebitInput) : Messagee,
 }
 type  Subscription {
     RegisterMessage : Message,
     LoginMessage : Message,
-    CreditMessage : Messag,
+    CreditMessage : Message,
     DebitMessage : Debit_Sub_data,
     UpdateAccount : Message,
     DeleteAccount : Message,

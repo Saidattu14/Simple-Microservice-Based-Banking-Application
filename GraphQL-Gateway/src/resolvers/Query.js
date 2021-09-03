@@ -4,7 +4,7 @@ import gettoken from '../Auth/Token_Verify'
 const producer = require('./producer')
 const consumer = require('./consumer')
 const Query = {
-    async get_Account_Management_Service(parent,args,{channel,pubsub,request},info) {
+    async get_Account_Management_Service(parent,args,{channel,pubsub,request,logger},info) {
         var data = gettoken(request,args.input.PersonID);
         if(data != null)
         {
@@ -15,7 +15,7 @@ const Query = {
         let id = uuidv4();
         json_data = jwt.sign(json_data, 'shhhhh');
         producer(channel,json_data,'getAccountDetails_queue','getAccountDetails_reply_queue',id);
-        let b =  consumer(id);
+        let b =  consumer(id,logger);
         return b;
         }
         else
