@@ -55,14 +55,11 @@ type Query {
     get_CreditDetails (input : CreditGetInput): [Credit_data],
     get_DebitDetails (input : DebitGetInput): [Debit_data],
 }
-type Messagee{
+type Message{
     reply_msg : String!,
     token : String!,
 }
-type Message{
-    result : String!,
 
-}
 type Account_details {
   CurrentBalance : ID!,
   CreatedDate  : String!,
@@ -82,32 +79,33 @@ type Credit_data {
     user_account_number : ID!,
     amount : ID!,
     createddate : String!,
+    transaction_id : ID!,
 }
 type Debit_data {
-    UserName : String!,
     account_number : ID!,
     account_code : String!,
-    transaction_ID : ID!,
-    debited_Amount : String!,
+    transaction_id : ID!,
+    amount : ID!,
+    createddate : String!,
 }
 type Credit_Sub_data {
     name : String!,
-    transaction_ID : ID!,
+    transaction_id : ID!,
     credited_Amount : String!,
     balance : String!,
 }
 type Debit_Sub_data {
     name : String!,
-    transaction_ID : ID!,
+    transaction_id : ID!,
     debit_Amount : String!, 
     balance : String!,
 }
 type Mutation {
-    registerAccount(input : RegisterInput) : Messagee,
-    createLogin(input: LoginInput): Messagee,
-    updateAccount(input : AccountManagementInput) : Messagee,
-    creditAmount(input : CreditInput) : Messagee,
-    debitAmount(input : DebitInput) : Messagee,
+    registerAccount(input : RegisterInput) : Message,
+    createLogin(input: LoginInput): Message,
+    updateAccount(input : AccountManagementInput) : Message,
+    creditAmount(input : CreditInput) : Message,
+    debitAmount(input : DebitInput) : Message,
 }
 type  Subscription {
     RegisterMessage : Message,

@@ -68,7 +68,7 @@ const Mutation = {
         return obj;
        }
     },
-    creditAmount(parent, args,{db,channel,request}, info) {
+    creditAmount(parent, args,{db,channel,request,logger}, info) {
         var data = gettoken(request,args.input.User_Account_Number);
         if(data != null)
         {
@@ -95,7 +95,7 @@ const Mutation = {
        }
 
     },
-    debitAmount(parent, args, { db,channel,request }, info) {
+    debitAmount(parent, args, { db,channel,request,logger }, info) {
         var data = gettoken(request,args.input.Account_number);
         if(data != null)
         {
@@ -108,10 +108,8 @@ const Mutation = {
         let id = uuidv4();
         json_data = jwt.sign(json_data, 'shhhhh');
         producer(channel,json_data,'DebitAmount_service_queue', 'DebitAmount_service_reply_queue',id);
-        channel.consume('DebitAmount_service_reply_queue',function(msg){
-            var token = JSON.parse(msg.content.toString());
-            console.log(token)
-        })
+        let b =  consumer(id,logger);
+        return b;
        }
        else
        
