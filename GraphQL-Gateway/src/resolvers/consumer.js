@@ -19,7 +19,7 @@ const consumer = async(id,logger) => {
                 if(data != null && data.status == 200)
                 {
                     let response = await data.json();
-                    console.log(response[id]);
+                    console.log(response);
                     resolve(response[id]);
                 }
                 else

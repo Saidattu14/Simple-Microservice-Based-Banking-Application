@@ -51,6 +51,7 @@ const Query = {
         json_data = jwt.sign(json_data, 'shhhhh');
         producer(channel,json_data,'getDebitDetails_queue','getDebitDetails_reply_queue',id);
         let b =  consumer(id);
+        
         return b;
        }
     }

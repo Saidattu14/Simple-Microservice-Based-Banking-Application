@@ -113,5 +113,4 @@ type  Subscription {
     CreditMessage : Message,
     DebitMessage : Debit_Sub_data,
     UpdateAccount : Message,
-    DeleteAccount : Message,
 }
