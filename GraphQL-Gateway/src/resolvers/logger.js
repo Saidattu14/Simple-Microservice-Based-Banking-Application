@@ -1,6 +1,6 @@
 const winston = require('winston');
 const logger = winston.createLogger({
-  level: 'error',
+  level: "error",
   transports: [
     new winston.transports.Console({
       format: winston.format.combine(
@@ -8,6 +8,10 @@ const logger = winston.createLogger({
         winston.format.simple(),
       ),
     }),
+    new winston.transports.File({
+      filename: 'errors.log',
+      level: 'error'
+    })
   ],
 });
 

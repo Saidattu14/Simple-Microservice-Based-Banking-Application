@@ -88,18 +88,7 @@ type Debit_data {
     amount : ID!,
     createddate : String!,
 }
-type Credit_Sub_data {
-    name : String!,
-    transaction_id : ID!,
-    credited_Amount : String!,
-    balance : String!,
-}
-type Debit_Sub_data {
-    name : String!,
-    transaction_id : ID!,
-    debit_Amount : String!, 
-    balance : String!,
-}
+
 type Mutation {
     registerAccount(input : RegisterInput) : Message,
     createLogin(input: LoginInput): Message,
@@ -107,10 +96,4 @@ type Mutation {
     creditAmount(input : CreditInput) : Message,
     debitAmount(input : DebitInput) : Message,
 }
-type  Subscription {
-    RegisterMessage : Message,
-    LoginMessage : Message,
-    CreditMessage : Message,
-    DebitMessage : Debit_Sub_data,
-    UpdateAccount : Message,
-}
+

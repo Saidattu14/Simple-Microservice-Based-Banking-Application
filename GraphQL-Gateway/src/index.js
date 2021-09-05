@@ -1,7 +1,6 @@
 import { GraphQLServer, PubSub } from 'graphql-yoga'
 import Query from './resolvers/Query'
 import {Mutation} from './resolvers/Mutation'
-import Subscription from './resolvers/Subscription'
 const redis = require('redis');
 const Queue = require('../src/resolvers/Queue')
 const consumer = require('./resolvers/consumer')
@@ -37,7 +36,6 @@ amqp.connect('amqp://localhost:5671', function(error,connection)
             resolvers: {
                 Query,
                 Mutation,
-                Subscription,
             },
             context(request) {
                 return{
