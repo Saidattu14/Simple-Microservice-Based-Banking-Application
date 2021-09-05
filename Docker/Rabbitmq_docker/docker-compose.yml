@@ -1,0 +1,21 @@
+version:  "3.9"
+services:
+    rabbitmq-docker:
+        image: rabbitmq:3.9.1-management
+        hostname: localhost
+        container_name: 'rabbitmq'
+        environment:
+            - RABBITMQ_DEFAULT_USER='admin'
+            - RABBITMQ_DEFAULT_PASS='Admin@123'  
+            - RABBITMQ_ERLANG_COOKIE= 'DSHEVCXBBETJJVJWTOWT'
+        ports:
+            - 5671:5672
+            - 15671:15672
+        volumes: 
+            - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+            - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+        networks:
+            - rabbitm-network
+networks: 
+    rabbitm-network:
+        driver: bridge
