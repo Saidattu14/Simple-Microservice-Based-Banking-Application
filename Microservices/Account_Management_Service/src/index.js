@@ -4,15 +4,16 @@ var Query = require('./Query')
 var Query_get = require('./Query_get')
 var jwt = require('jsonwebtoken');
 const client = new Client({
-    user: 'user',
-    host: 'localhost',
-    password: '123456',
-    port: 5431,
-    database : 'default_database'
+    user: process.env.user,
+    host: process.env.host,
+    password: process.env.password,
+    port: process.env.port,
+    database : process.env.database
   })
   try 
   {
     client.connect()
+    console.log("Database_connected")
   }catch (error) 
   {
     console.log("DataBase is not Connected")
