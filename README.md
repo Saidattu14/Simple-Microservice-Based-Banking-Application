@@ -19,8 +19,30 @@ The service authenticates and stores the user data in the database and responds 
 
 The service validates and responds with a token to provide access to other services.
 
+## Account Management Services
+
+The service updates the user data and is also used to get user details information.
+
+## Debit Management Services
+
+The service debit the user requested amount and also get the last debit details information.
+
+## Credit Management Services
+
+The services credit the requested amount from the user account to the credit user account and also get the last credit details information.
 
 
+## Node.js Server 
 
+The server consumes the data from the reply back channels and responses to the GraphQL gateway and acknowledges the messages.
+
+
+## A list of technologies used within the project:
+
+* RabbitMQ
+* PostgreSQL
+* Docker
+* GraphQL
+* Node.js
 
 
