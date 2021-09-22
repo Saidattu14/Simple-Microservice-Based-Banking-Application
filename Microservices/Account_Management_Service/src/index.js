@@ -3,6 +3,7 @@ var amqp = require('amqplib/callback_api');
 var Query = require('./Query')
 var Query_get = require('./Query_get')
 var jwt = require('jsonwebtoken');
+const rabbitmq_host =  process.env.rabbitmq;
 const client = new Client({
     user: process.env.user,
     host: process.env.host,
@@ -19,7 +20,7 @@ const client = new Client({
     console.log("DataBase is not Connected")
   }
 const services = async() => {
-  amqp.connect('amqp://localhost:5671', function(error,connection) {
+  amqp.connect(rabbitmq_host, function(error,connection) {
   if(error != null)
   {
      throw error;
