@@ -5,8 +5,10 @@ const bluebird = require('bluebird');
 var express = require('express');
 const morgan = require('morgan');
 var app = express();
+const rabbitmq_host =  process.env.rabbitmq;
 app.use(morgan('combined', { stream: logger.stream }));
-amqp.connect('amqp://localhost:5671', function(error,connection) {
+
+amqp.connect(rabbitmq_host, function(error,connection) {
   if(error != null)
   {
      throw error;
