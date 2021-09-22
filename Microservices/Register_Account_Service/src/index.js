@@ -2,12 +2,13 @@ const {Client} = require('pg');
 var amqp = require('amqplib/callback_api');
 var jwt = require('jsonwebtoken');
 var Query = require('./Query')
+const rabbitmq_host =  process.env.rabbitmq;
 const client = new Client({
-    user: 'user',
-    host: 'localhost',
-    password: '123456',
-    port: 5431,
-    database : 'default_database'
+    user: process.env.user,
+    host: process.env.host,
+    password: process.env.password,
+    port: process.env.port,
+    database : process.env.database
   })
 const create_table = `CREATE TABLE User_Information(
   PersonID varchar(255) NOT NULL PRIMARY KEY,
@@ -126,7 +127,7 @@ const database_fumctioning = async() => {
       }
      }
   });
-  amqp.connect('amqp://localhost:5671', function(error,connection) {
+  amqp.connect(rabbitmq_host, function(error,connection) {
   if(error != null)
   {
      throw error;
